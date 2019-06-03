@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  release: 2019-06-03 15:20:16
+  end: 2019-06-03 15:20:16
+  price: 1.5
+  type: 1
+  client: one
+
+two:
+  title: MyString
+  description: MyString
+  release: 2019-06-03 15:20:16
+  end: 2019-06-03 15:20:16
+  price: 1.5
+  type: 1
+  client: two

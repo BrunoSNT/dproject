@@ -11,6 +11,7 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.date :birthday
       t.integer :cpf
       t.integer :rg
+      t.text :description
 
       t.timestamps
     end

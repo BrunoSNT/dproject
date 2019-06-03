@@ -1,0 +1,53 @@
+<%= form_with(model: advertise, local: true) do |form| %>
+  <% if advertise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(advertise.errors.count, "error") %> prohibited this advertise from being saved:</h2>
+
+      <ul>
+      <% advertise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :release %>
+    <%= form.datetime_select :release %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end %>
+    <%= form.datetime_select :end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adv_type %>
+    <%= form.number_field :adv_type %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :clients %><br />
+    <%= form.collection_select(:client_id, Client.all, :id, :first_name) %> 
+   </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @advertise.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @advertise.description %>
+</p>
+
+<p>
+  <strong>Release:</strong>
+  <%= @advertise.release %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @advertise.end %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @advertise.price %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @advertise.type %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @advertise.client %>
+</p>
+
+<%= link_to 'Edit', edit_advertise_path(@advertise) %> |
+<%= link_to 'Back', advertises_path %>

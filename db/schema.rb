@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_055646) do
+ActiveRecord::Schema.define(version: 2019_06_03_221442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.boolean "helpdesk"
+    t.string "zip_code"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "complement"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_addresses_on_client_id"
+  end
+
+  create_table "adverstise_histories", force: :cascade do |t|
+    t.integer "rating"
+    t.integer "status"
+    t.boolean "paid"
+    t.integer "grade"
+    t.bigint "advertise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advertise_id"], name: "index_adverstise_histories_on_advertise_id"
+  end
+
+  create_table "advertises", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "release"
+    t.datetime "end"
+    t.float "price"
+    t.integer "type"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_advertises_on_client_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -45,6 +82,9 @@ ActiveRecord::Schema.define(version: 2019_06_03_055646) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "clients"
+  add_foreign_key "adverstise_histories", "advertises"
+  add_foreign_key "advertises", "clients"
   add_foreign_key "categorizations", "categories"
   add_foreign_key "categorizations", "clients"
 end

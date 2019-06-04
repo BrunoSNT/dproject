@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_221442) do
+ActiveRecord::Schema.define(version: 2019_06_03_224039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2019_06_03_221442) do
 
   create_table "advertises", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.datetime "release"
     t.datetime "end"
     t.float "price"
-    t.integer "type"
+    t.integer "adv_type"
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,8 +78,27 @@ ActiveRecord::Schema.define(version: 2019_06_03_221442) do
     t.date "birthday"
     t.integer "cpf"
     t.integer "rg"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "official_reviews", force: :cascade do |t|
+    t.bigint "client_id"
+    t.integer "official_rating"
+    t.text "official_review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_official_reviews_on_client_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "client_id"
+    t.integer "rating"
+    t.text "user_review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_reviews_on_client_id"
   end
 
   add_foreign_key "addresses", "clients"
@@ -87,4 +106,6 @@ ActiveRecord::Schema.define(version: 2019_06_03_221442) do
   add_foreign_key "advertises", "clients"
   add_foreign_key "categorizations", "categories"
   add_foreign_key "categorizations", "clients"
+  add_foreign_key "official_reviews", "clients"
+  add_foreign_key "reviews", "clients"
 end

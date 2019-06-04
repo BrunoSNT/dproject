@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @official_review.client %>
+</p>
+
+<p>
+  <strong>Official rating:</strong>
+  <%= @official_review.official_rating %>
+</p>
+
+<p>
+  <strong>Official review:</strong>
+  <%= @official_review.official_review %>
+</p>
+
+<%= link_to 'Edit', edit_official_review_path(@official_review) %> |
+<%= link_to 'Back', official_reviews_path %>

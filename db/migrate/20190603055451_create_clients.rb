@@ -12,6 +12,8 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.integer :cpf
       t.integer :rg
       t.text :description
+      t.string :instgram_url
+      t.string :twitter_url
 
       t.timestamps
     end

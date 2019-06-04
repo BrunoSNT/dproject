@@ -61,6 +61,16 @@
     <%= form.number_field :rg %>
   </div>
 
+    <div class="field">
+    <%= form.label :twitter_url %>
+    <%= form.number_field :twitter_url %>
+  </div>
+
+    <div class="field">
+    <%= form.label :instagram_url %>
+    <%= form.number_field :instagram_url %>
+  </div>
+
   <div class="field">
     <%= form.label :categories %><br />
     <% for category in Category.all %>

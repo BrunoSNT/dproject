@@ -1,0 +1,32 @@
+<%= form_with(model: official_review, local: true) do |form| %>
+  <% if official_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(official_review.errors.count, "error") %> prohibited this official_review from being saved:</h2>
+
+      <ul>
+      <% official_review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :clients %><br />
+    <%= form.collection_select(:client_id, Client.all, :id, :first_name) %> 
+   </div>
+
+  <div class="field">
+    <%= form.label :official_rating %>
+    <%= form.number_field :official_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :official_review %>
+    <%= form.text_area :official_review %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
